@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load leaflet_tags %}
+<head>
+	{% leaflet_js %}
+	{% leaflet_css %}
+	<title>Open Cave Map</title>
+	<style type="text/css">
+		#gis {width: 80%;height: 780px;}
+	</style>
+	<script type="text/javascript" src="{% static 'dist/leaflet.ajax.js' %}"></script>
+</head>
+<body>
+<h1>Scan cave places</h1>
+<br>
+<script type="text/javascript">
+	function location_layer(map, options){
+		var datasets = new L.GeoJSON.AJAX("{% url 'places' %}",{
+
+		});
+
+		datasets.addTo(map);
+	}
+</script>
+{% leaflet_map "gis" callback="window.location_layer" %}
+</body>
+</html>
