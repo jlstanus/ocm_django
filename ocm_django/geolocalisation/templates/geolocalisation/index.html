@@ -15,9 +15,23 @@
 <h1>Scan cave places</h1>
 <br>
 <script type="text/javascript">
-	function location_layer(map, options){
-		var datasets = new L.GeoJSON.AJAX("{% url 'places' %}",{
 
+	function location_layer(map, options){
+		var radarIcon = L.icon({
+			iconUrl: '{% static 'icon/radar.svg' %}',
+			iconSize: [32, 37],
+			iconAnchor: [16, 37],
+			popupAnchor: [0, -28]
+		});
+		var datasets = new L.GeoJSON.AJAX("{% url 'places' %}",{
+			pointToLayer: function (feature, latlng) {
+			return L.marker(latlng, {
+					icon: radarIcon
+				});
+			},
+			onEachFeature : function(feature, layer){
+				layer.bindPopup(feature.properties.name.toString());
+			}
 		});
 
 		datasets.addTo(map);
