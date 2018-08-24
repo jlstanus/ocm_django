@@ -1,0 +1,8 @@
+<h1>Places</h1>
+<ul>
+{% for place in object_list %}
+    <li>{{ place.date|date }} - {{ place.name }}</li>
+{% empty %}
+    <li>No places yet.</li>
+{% endfor %}
+</ul>

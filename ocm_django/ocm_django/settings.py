@@ -135,8 +135,8 @@ STATICFILES_DIRS = (
 LEAFLET_CONFIG = {
 	'DEFAULT_CENTER': (50.28, 4.52),
 	'DEFAULT_ZOOM' : 5,
-	'MAX_ZOOM': 20,
-	'MIN_ZOOM': 3,
+	'MAX_ZOOM': 18,
+	'MIN_ZOOM': 4,
 	'PLUGINS': {
         'leaflet.locatecontrol': {
             'css': 'dist/L.Control.Locate.min.css',
