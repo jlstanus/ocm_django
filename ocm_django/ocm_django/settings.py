@@ -137,4 +137,16 @@ LEAFLET_CONFIG = {
 	'DEFAULT_ZOOM' : 5,
 	'MAX_ZOOM': 20,
 	'MIN_ZOOM': 3,
+	'PLUGINS': {
+        'leaflet.locatecontrol': {
+            'css': 'dist/L.Control.Locate.min.css',
+            'js': 'dist/L.Control.Locate.min.js',
+            'auto-include': True
+        },
+      	'leaflet-ajax': {
+      		'css': '',
+            'js': 'dist/leaflet.ajax.js',
+            'auto-include': True
+        },
+    }
 }

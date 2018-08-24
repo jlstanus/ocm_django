@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+{% load leaflet_tags %}
+<head>
+	{% leaflet_js plugins="ALL" %}
+	{% leaflet_css plugins="ALL" %}
+	<title>Open Cave Map</title>
+	<style type="text/css">
+		#gis {width: 80%;height: 780px;}
+	</style>
+</head>
+<body>
+	{% block content %}{% endblock content %}
+</body>
+</html>
