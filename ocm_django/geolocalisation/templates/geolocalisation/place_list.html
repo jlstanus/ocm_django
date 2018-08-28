@@ -1,8 +1,26 @@
-<h1>Places</h1>
-<ul>
-{% for place in object_list %}
-    <li>{{ place.date|date }} - {{ place.name }}</li>
-{% empty %}
-    <li>No places yet.</li>
-{% endfor %}
-</ul>
+{% extends "base.html" %}
+{% block content %}
+	<h1>Places</h1>
+	<ul>
+		{% for place in object_list %}
+			<li>
+			<a href="{% url "place_update" place.pk %}">Update</a> - 
+        	<a href="{% url "place_delete" place.pk %}">Delete</a>
+    	{{ place.date|date }} - {{ place.name }}</li>
+		{% empty %}
+			<li>No places yet.</li>
+		{% endfor %}
+	</ul>
+{% endblock content %}
+
+{% if is_paginated %}
+	<div class="pagination">
+		{% if page_obj.has_previous %}
+			<a href="?page={{ page_obj.previous_page_number }}">Précédente</a> —
+		{% endif %}
+		Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
+		{% if page_obj.has_next %}
+		  — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+		{% endif %}
+	</div>
+{% endif %}

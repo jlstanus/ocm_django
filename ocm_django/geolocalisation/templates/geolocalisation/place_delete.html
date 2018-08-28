@@ -1,0 +1,13 @@
+<h1>Are you sure to delete this place?</h1>
+
+
+<p>{{ place.name }} -&gt; {{ place.description }} (créée le {{ place.date|date:"DATE_FORMAT" }})</p>
+
+
+<form method="post" action="">
+
+   {% csrf_token %}  
+
+   <input type="submit" value"Yes, i delete the place and scans" /> - <a href="{% url "places_list" %}">No, i keep it</a>
+
+</form>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load leaflet_tags %}
+
+{% block content %}
+
+<h1>{{ place.name }} <span class="small"></span></h1>
+
+<p class="date">{{ place.date|date:"DATE_FORMAT" }}</p>
+
+<p class="description">{{ place.description|linebreaks }}</p>
+
+<script type="text/javascript">
+    function map_init(map, options) {
+        // get point lat and lon
+        var lon = "{{ place.geometry.x }}";
+        var lat = "{{ place.geometry.y }}";
+        // zoom to point & add it to map
+        map.setView([lat, lon], 12);
+        L.marker([lat, lon]).addTo(map);
+    }
+</script>
+
+<a href="{% url "place_update" place.pk %}">Update</a> - 
+<a href="{% url "place_delete" place.pk %}">Delete</a>
+
+{% leaflet_map "main" callback="map_init" %}
+
+{% endblock content %}
+
+
+

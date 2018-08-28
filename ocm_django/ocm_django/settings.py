@@ -148,5 +148,8 @@ LEAFLET_CONFIG = {
             'js': 'dist/leaflet.ajax.js',
             'auto-include': True
         },
+        'forms': {
+            'auto-include': True
+        }
     }
 }

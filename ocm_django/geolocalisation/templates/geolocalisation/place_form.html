@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+{% load leaflet_tags %}
+
+{% block title %}Scan cave places{% endblock %}
+
+{% block content %}
+	<h1>Create new scan</h1>
+	<br>
+	<form method="post" action="">
+		{% csrf_token %}
+		{{ form.as_p }}
+
+	<input type="submit"/>
+
+{% endblock content %}

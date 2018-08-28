@@ -3,14 +3,21 @@
 {% load static %}
 {% load leaflet_tags %}
 <head>
+	<title>{% block title %}{% endblock %}</title>
 	{% leaflet_js plugins="ALL" %}
 	{% leaflet_css plugins="ALL" %}
-	<title>Open Cave Map</title>
 	<style type="text/css">
-		#gis {width: 80%;height: 780px;}
+		#gis #id_location-map {width: 80%;height: 780px;}
 	</style>
 </head>
-<body>
-	{% block content %}{% endblock content %}
-</body>
+
+<header>Open Cave Map</header>
+	<nav>
+		<a href="{% url 'place_create' %}">New Scan</a>
+		<a href="{% url 'places_list' %}">Scan List</a>
+		<a href="/Scanner/">Scanner</a>
+	</nav>
+	<body>
+		{% block content %}{% endblock content %}
+	</body>
 </html>
