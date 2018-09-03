@@ -40,7 +40,8 @@ INSTALLED_APPS = [
 	'django.contrib.gis',
 	'leaflet',
 	'geolocalisation',
-
+	'main',
+	#'stations',
 ]
 
 MIDDLEWARE = [

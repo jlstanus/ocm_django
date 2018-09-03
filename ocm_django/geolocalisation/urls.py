@@ -1,8 +1,7 @@
 from django.urls import path
-from .views import HomeView, MapView, places_dataset, PlaceListView, PlaceCreateView, PlaceView, PlaceUpdate, PlaceDelete
+from .views import MapView, places_dataset, PlaceListView, PlaceCreateView, PlaceView, PlaceUpdate, PlaceDelete
 
 urlpatterns = [
-	path('', HomeView.as_view(), name='home'),
 	path('map', MapView.as_view(), name='map'),
 	path('<int:pk>/', PlaceView.as_view(), name='place'),
 	path('places', places_dataset, name='places'),

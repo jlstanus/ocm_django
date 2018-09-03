@@ -7,9 +7,6 @@ from .models import Place
 from .forms import PlaceForm
 # Create your views here.
 
-class HomeView(TemplateView):
-	template_name = 'geolocalisation/home.html' 
-
 class MapView(TemplateView):
 	template_name = 'geolocalisation/map.html'
 
