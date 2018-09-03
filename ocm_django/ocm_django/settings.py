@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 	'django.contrib.gis',
 	'leaflet',
 	'geolocalisation',
+
 ]
 
 MIDDLEWARE = [
@@ -112,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/dev/topics/i18n/
 
-LANGUAGE_CODE = 'fr-be'
+LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
@@ -139,16 +140,17 @@ LEAFLET_CONFIG = {
 	'MIN_ZOOM': 4,
 	'PLUGINS': {
         'leaflet.locatecontrol': {
-            'css': 'dist/L.Control.Locate.min.css',
-            'js': 'dist/L.Control.Locate.min.js',
+            'css': 'locate/L.Control.Locate.min.css',
+            'js': 'locate/L.Control.Locate.min.js',
             'auto-include': True
         },
       	'leaflet-ajax': {
       		'css': '',
-            'js': 'dist/leaflet.ajax.js',
+            'js': 'leaflet-ajax-2.1.0/dist/leaflet.ajax.js',
             'auto-include': True
         },
         'forms': {
+
             'auto-include': True
         }
     }

@@ -1,26 +1,34 @@
 {% extends "base.html" %}
+
 {% block content %}
-	<h1>Places</h1>
-	<ul>
-		{% for place in object_list %}
-			<li>
-			<a href="{% url "place_update" place.pk %}">Update</a> - 
-        	<a href="{% url "place_delete" place.pk %}">Delete</a>
-    	{{ place.date|date }} - {{ place.name }}</li>
-		{% empty %}
-			<li>No places yet.</li>
-		{% endfor %}
-	</ul>
+	<h1 class="ml-3">Places</h1>
+	<div class="card-columns">
+	{% for place in object_list %}
+		<div class="card bg-light ml-2 mr-2" style="max-width: 20rem;">
+				<div class="card-header">{{ place.name }}</div>
+				<div class="card-body">
+					<h5 class="card-subtitle">{{ place.date|date }}</h5>
+					<p class="card-text">{{ place.description}}</p>
+				</div>
+			<a href="{% url 'place' place.pk %}" class="btn btn-primary">View</a>	
+		</div>
+	
+	{% empty %}
+		<li>No places yet.</li>
+	{% endfor %}
+</div>s
 {% endblock content %}
 
 {% if is_paginated %}
-	<div class="pagination">
-		{% if page_obj.has_previous %}
-			<a href="?page={{ page_obj.previous_page_number }}">Précédente</a> —
-		{% endif %}
-		Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
-		{% if page_obj.has_next %}
-		  — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
-		{% endif %}
-	</div>
+	<nav>
+		<div class="pagination">
+			{% if page_obj.has_previous %}
+				<a href="?page={{ page_obj.previous_page_number }}">Précédente</a> —
+			{% endif %}
+			Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
+			{% if page_obj.has_next %}
+			  — <a href="?page={{ page_obj.next_page_number }}">Suivante</a>
+			{% endif %}
+		</div>
+	</nav>
 {% endif %}

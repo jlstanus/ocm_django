@@ -20,7 +20,7 @@ class PlaceView(DetailView):
 		
 class PlaceListView(ListView):
 	model = Place
-	paginate_by = 15  # if pagination is desired
+	paginate_by = 9  # if pagination is desired
 
 class PlaceCreateView(CreateView):
 	model = Place

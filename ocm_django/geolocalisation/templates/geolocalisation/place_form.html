@@ -10,7 +10,21 @@
 	<form method="post" action="">
 		{% csrf_token %}
 		{{ form.as_p }}
-
+	<script type="text/javascript">
+		function location_layer(map, options){
+			var locate = L.control.locate({
+				drawCircle: false,
+				icon: "fa fa-location-arrow",
+				position : 'topright',
+				maxZoom: 4,
+				strings: {
+					title: "Show My Location"
+				}
+			});
+			locate.addTo(map);
+		}
+	</script>
+	
 	<input type="submit"/>
 
 {% endblock content %}
