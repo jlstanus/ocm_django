@@ -2,14 +2,17 @@
 {% load static %}
 {% load leaflet_tags %}
 
+{% load crispy_forms_tags %}
+
 {% block title %}Scan cave places{% endblock %}
 
 {% block content %}
-	<h1>Create new scan</h1>
-	<br>
-	<form method="post" action="">
-		{% csrf_token %}
-		{{ form.as_p }}
+<h1>Create new scan</h1>
+<br>
+<form method="post" action="" novalidate>
+	{% csrf_token %}
+	{{ form|crispy }}
+
 	<script type="text/javascript">
 		function location_layer(map, options){
 			var locate = L.control.locate({
@@ -25,6 +28,7 @@
 		}
 	</script>
 	
-	<input type="submit"/>
+	<button type="submit" class="btn btn-success">Save place</button>
+</form>
 
-{% endblock content %}
+{% endblock %}

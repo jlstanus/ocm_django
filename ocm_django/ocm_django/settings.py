@@ -39,9 +39,10 @@ INSTALLED_APPS = [
 	'django.contrib.staticfiles',
 	'django.contrib.gis',
 	'leaflet',
+	'crispy_forms',
 	'geolocalisation',
 	'main',
-	#'stations',
+	'stations',
 ]
 
 MIDDLEWARE = [
@@ -156,3 +157,6 @@ LEAFLET_CONFIG = {
         }
     }
 }
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'

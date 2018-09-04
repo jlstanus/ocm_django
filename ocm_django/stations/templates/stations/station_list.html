@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1 class="ml-3">Places</h1>
+	<h1 class="ml-3">Stations</h1>
 	<div class="card-columns">
-	{% for place in object_list %}
+	{% for station in object_list %}
 		<div class="card bg-light ml-2 mr-2" style="max-width: 20rem;">
-				<div class="card-header">{{ place.name }}</div>
+				<div class="card-header">{{ station.name }}</div>
 				<div class="card-body">
-					<h5 class="card-subtitle">{{ place.date|date }}</h5>
-					<p class="card-text">{{ place.description}}</p>
+					<h5 class="card-subtitle">{{ station.date|date }}</h5>
+					<p class="card-text">{{ station.description}}</p>
 				</div>
-			<a href="{% url 'place' place.pk %}" class="btn btn-primary">View</a>	
+			<a href="{% url 'station' station.pk %}" class="btn btn-primary">View</a>	
 		</div>
 	
 	{% empty %}
-		<li>No places yet.</li>
+		<li>No station yet.</li>
 	{% endfor %}
-</div>
+</div>s
 {% endblock content %}
 
 {% if is_paginated %}

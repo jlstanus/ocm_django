@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+	<h1>{{ station.name }} <span class="small"></span></h1>
+</div>
+
+<p class="date">{{ station.date|date:"DATE_FORMAT" }}</p>
+<p class="description">{{ station.description|linebreaks }}</p>
+
+<a href="{% url "station_update" station.pk %}">Update</a> - 
+<a href="{% url "station_delete" station.pk %}">Delete</a>
+
+{% endblock content %}
+
+
+
