@@ -3,18 +3,18 @@
 {% block content %}
 	<h1 class="ml-3">Stations</h1>
 	<div class="card-columns">
-	{% for station in object_list %}
+	{% for scan in object_list %}
 		<div class="card bg-light ml-2 mr-2" style="max-width: 20rem;">
-				<div class="card-header">{{ station.name }}</div>
+				<div class="card-header">{{ scan.name }}</div>
 				<div class="card-body">
-					<h5 class="card-subtitle">{{ station.date|date }}</h5>
-					<p class="card-text">{{ station.description}}</p>
+					<h5 class="card-subtitle">{{ scan.date|date }}</h5>
+					<p class="card-text">{{ scan.description}}</p>
 				</div>
-			<a href="{% url 'station' station.pk %}" class="btn btn-primary">View</a>	
+			<a href="{% url 'scan' scan.pk %}" class="btn btn-primary">View</a>	
 		</div>
 	
 	{% empty %}
-		<li>No station yet.</li>
+		<li>No scan yet.</li>
 	{% endfor %}
 </div>
 {% endblock content %}

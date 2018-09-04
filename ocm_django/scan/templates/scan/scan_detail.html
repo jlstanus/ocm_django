@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div>
+	<h1>{{ scan.name }} <span class="small"></span></h1>
+</div>
+
+<p class="date">{{ scan.date|date:"DATE_FORMAT" }}</p>
+<p class="description">{{ scan.description|linebreaks }}</p>
+
+<a href="{% url "scan_update" scan.pk %}">Update</a> - 
+<a href="{% url "scan_delete" scan.pk %}">Delete</a>
+
+{% endblock content %}
+
+
+

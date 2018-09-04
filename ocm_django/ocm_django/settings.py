@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 	'geolocalisation',
 	'main',
 	'stations',
+	'scan',
 ]
 
 MIDDLEWARE = [

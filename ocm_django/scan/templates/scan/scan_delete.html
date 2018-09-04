@@ -1,0 +1,13 @@
+<h1>Are you sure to delete this scan?</h1>
+
+
+<p>{{ scan.name }} -&gt; {{ scan.description }} (créée le {{ scan.date|date:"DATE_FORMAT" }})</p>
+
+
+<form method="post" action="">
+
+   {% csrf_token %}  
+
+   <input type="submit" value"Yes, i delete the scan and scans" /> - <a href="{% url "scans_list" %}">No, i keep it</a>
+
+</form>
