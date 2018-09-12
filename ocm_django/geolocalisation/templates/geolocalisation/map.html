@@ -4,6 +4,15 @@
 
 {% block title %}Scan cave places{% endblock %}
 
+{% block head %}
+	{{block.super}}
+	{% leaflet_js plugins="ALL" %}
+	{% leaflet_css plugins="ALL" %}
+	<style type="text/css">
+		#gis  {width: 80%;height: 780px;}
+	</style>
+{% endblock %}
+
 {% block content %}
 	<h1>Scan cave places</h1>
 	<br>

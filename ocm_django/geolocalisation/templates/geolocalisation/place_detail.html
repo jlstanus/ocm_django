@@ -1,6 +1,15 @@
 {% extends "base.html" %}
 {% load leaflet_tags %}
 
+{% block head %}
+    {{block.super}}
+    {% leaflet_js plugins="ALL" %}
+    {% leaflet_css plugins="ALL" %}
+    <style type="text/css">
+        #gis  {width: 80%;height: 780px;}
+    </style>
+{% endblock %}
+
 {% block content %}
 
 <div>

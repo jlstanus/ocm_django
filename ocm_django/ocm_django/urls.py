@@ -21,5 +21,5 @@ urlpatterns = [
     path('geolocation/', include('geolocalisation.urls')),
     path('', include('main.urls')),
     path('stations/', include('stations.urls')),
-    path('scan', include('scan.urls')),
+    path('scan/', include('scan.urls')),
 ]

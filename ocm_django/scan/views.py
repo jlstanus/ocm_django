@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
 from .models import Scan
 from .forms import ScanForm
+from . import plots
 # Create your views here.
 
 class ScanView(DetailView):
@@ -36,5 +37,14 @@ class ScanDelete(DeleteView):
 	# success_url = 'liste'
 	def get_success_url(self):
 		return reverse('scan_list')
+
+class Plot3DScatterView(TemplateView):
+    template_name = "scan/scan_plot.html"
+
+    def get_context_data(self, **kwargs):
+        # Call the base implementation first to get a context
+        context = super(Plot3DScatterView, self).get_context_data(**kwargs)
+        context['plot'] = plots.plot3D_scatter
+        return context
 
 
