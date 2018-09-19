@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<h1 class="ml-3">Places</h1>
+	<h1 class="ml-3">Places <a href="{% url 'place_create' %}" class="btn btn-secondary">New Place</a></h1>
+	
 	<div class="card-columns">
 	{% for place in object_list %}
 		<div class="card bg-light ml-2 mr-2" style="max-width: 20rem;">
