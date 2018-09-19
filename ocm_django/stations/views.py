@@ -45,7 +45,8 @@ class StationListViewFromPlace(ListView):
 	template_name = "station_list.html"
 
 	def get_queryset(self):
-		del self.request.session['station_name']
+		if 'station_name' in self.request.session:
+			del self.request.session['station_name']
 		self.request.session['place_name'] = Place.objects.get(id=self.kwargs['pk']).name
 		self.request.session['place_id'] = self.kwargs['pk']
 		return Station.objects.filter(place__id=self.kwargs['pk'])
