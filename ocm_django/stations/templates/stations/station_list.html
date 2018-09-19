@@ -8,6 +8,7 @@
 				<div class="card-header">{{ station.name }}</div>
 				<div class="card-body">
 					<h5 class="card-subtitle">{{ station.date|date }}</h5>
+					<p class="card-text">{{ station.place.name}}</p>
 					<p class="card-text">{{ station.description}}</p>
 				</div>
 			<a href="{% url 'station' station.pk %}" class="btn btn-primary">View</a>	

@@ -45,6 +45,7 @@ class ScanListViewFromStation(ListView):
 	template_name = "scan_list.html"
 
 	def get_queryset(self):
+		self.request.session['place_name'] = Station.objects.get(id=self.kwargs['pk']).place.name
 		self.request.session['station_name'] = Station.objects.get(id=self.kwargs['pk']).name
 		self.request.session['station_id'] = self.kwargs['pk']
 		return Scan.objects.filter(station__id=self.kwargs['pk'])
