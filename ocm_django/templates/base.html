@@ -49,6 +49,20 @@
 			</ul>
 		</div>
 	</nav>
+	<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+			{% if 'place_name' in request.session %}
+			<li class="breadcrumb-item" ><a href="{% url 'place' request.session.place_id %}">{{ request.session.place_name }}</a></li>
+			{% else %}
+			<li class="breadcrumb-item active" aria-current="page">No Place</li>
+			{% endif %}
+			{% if 'station_name' in request.session %}
+			<li class="breadcrumb-item" ><a href="{% url 'station' request.session.station_id %}">{{ request.session.station_name }}</a></li>
+			{% else %}
+			<li class="breadcrumb-item active" aria-current="page">No Station</li>
+			{% endif %}
+			</ol>
+	</nav>
 	<body>
 		{% block content %}{% endblock %}
 	</body>

@@ -11,6 +11,7 @@
 					<p class="card-text">{{ station.description}}</p>
 				</div>
 			<a href="{% url 'station' station.pk %}" class="btn btn-primary">View</a>	
+			<a href="{% url 'scans_from_list' station.pk %}" class="btn btn-primary">Select</a>
 		</div>
 	
 	{% empty %}

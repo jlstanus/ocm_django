@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
+from stations.models import Station
 from .models import Scan
 from .forms import ScanForm
 from . import plots
@@ -37,6 +38,16 @@ class ScanDelete(DeleteView):
 	# success_url = 'liste'
 	def get_success_url(self):
 		return reverse('scan_list')
+
+class ScanListViewFromStation(ListView):
+	model = Scan
+	paginate_by = 9
+	template_name = "scan_list.html"
+
+	def get_queryset(self):
+		self.request.session['station_name'] = Station.objects.get(id=self.kwargs['pk']).name
+		self.request.session['station_id'] = self.kwargs['pk']
+		return Scan.objects.filter(station__id=self.kwargs['pk'])
 
 class Plot3DScatterView(TemplateView):
     template_name = "scan/scan_plot.html"

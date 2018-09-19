@@ -10,7 +10,8 @@
 					<h5 class="card-subtitle">{{ place.date|date }}</h5>
 					<p class="card-text">{{ place.description}}</p>
 				</div>
-			<a href="{% url 'place' place.pk %}" class="btn btn-primary">View</a>	
+			<a href="{% url 'place' place.pk %}" class="btn btn-secondary">View</a>	
+			<a href="{% url 'stations_from_list' place.pk %}" class="btn btn-primary">Select</a>
 		</div>
 	
 	{% empty %}
