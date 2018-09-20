@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse
@@ -23,6 +23,17 @@ class StationCreateView(CreateView):
 
 	def get_success_url(self):
 		return reverse('station', args=(self.object.pk,))
+
+	def get_initial(self):
+		# if 'pk' in self.kwargs :
+		# 	place = get_object_or_404(Place, id=self.kwargs['pk'])
+		if 'place_id' in self.request.session:
+			place = get_object_or_404(Place, id=self.request.session['place_id'])
+		else:
+			place = 0
+		return {
+		    'place':place,
+		}
 
 class StationUpdate(UpdateView):
 	model = Station

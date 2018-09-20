@@ -2,7 +2,7 @@
 
 {% block content %}
 	<h1 class="ml-3">Stations <a href="{% url 'station_create' %}" class="btn btn-secondary">New Station</a></h1>
-
+	
 	<div class="card-columns">
 	{% for station in object_list %}
 		<div class="card bg-light ml-2 mr-2" style="max-width: 20rem;">
