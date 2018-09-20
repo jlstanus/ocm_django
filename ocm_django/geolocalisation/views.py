@@ -24,7 +24,7 @@ class PlaceCreateView(CreateView):
 	form_class = PlaceForm
 
 	def get_success_url(self):
-		return reverse('place', args=(self.object.pk,))
+		return reverse('stations_from_list', args=(self.object.pk,))
 
 class PlaceUpdate(UpdateView):
 	model = Place

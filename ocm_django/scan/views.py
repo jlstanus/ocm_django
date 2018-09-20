@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponse, HttpResponseBadRequest, JsonResponse
@@ -24,6 +24,15 @@ class ScanCreateView(CreateView):
 	def get_success_url(self):
 		return reverse('scan', args=(self.object.pk,))
 
+	def get_initial(self):
+		if 'station_id' in self.request.session:
+			station = get_object_or_404(Station, id=self.request.session['station_id'])
+		else:
+			station = Station.objects.all.latest('date').id
+		return {
+		    'station':station,
+		}
+
 class ScanUpdate(UpdateView):
 	model = Scan
 	template_name = 'scan/scan_form.html'
@@ -41,7 +50,7 @@ class ScanDelete(DeleteView):
 
 class ScanListViewFromStation(ListView):
 	model = Scan
-	paginate_by = 9
+	paginate_by = 12
 	template_name = "scan_list.html"
 
 	def get_queryset(self):
