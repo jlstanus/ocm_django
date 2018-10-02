@@ -22,4 +22,5 @@ urlpatterns = [
     path('', include('main.urls')),
     path('stations/', include('stations.urls')),
     path('scan/', include('scan.urls')),
+    path('gps/', include('GPS.urls')),
 ]

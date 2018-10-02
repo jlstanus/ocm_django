@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	'channels',
 	'django.contrib.admin',
 	'django.contrib.auth',
 	'django.contrib.contenttypes',
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
 	'main',
 	'stations',
 	'scan',
+	'GPS',
+	'gpsWorker',
 ]
 
 MIDDLEWARE = [
@@ -161,3 +164,15 @@ LEAFLET_CONFIG = {
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# Channels
+ASGI_APPLICATION = 'ocm_django.routing.application'
+
+CHANNEL_LAYERS = {
+	"default": {
+    	"CONFIG": {
+       		"hosts":[('127.0.0.1', 6379)],
+ 		},
+ 		"BACKEND": "channels_redis.core.RedisChannelLayer",
+ 	},
+}

@@ -1,0 +1,48 @@
+<!-- gps/templates/gps/room.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>GPS position</title>
+</head>
+<body>
+    {% load staticfiles %}
+    <div class="section">
+        <div class="container">
+            <h1>GPS Reading</h1>
+            <p>
+                <div id="gps">Position Reading: {{ sensor }}</div>
+            </p>
+        </div>
+    </div>
+</body>
+<script>
+
+    var gpsName = {{ gps_name_json }};
+
+    var gpsSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/gps/' + gpsName + '/');
+
+    gpsSocket.onopen = function(e) {
+       console.log("Connected!");
+       $('#gps').text("Connected!");
+       // gpsSocket.send(gpsName);
+    };
+    gpsSocket.onmessage = function(e) {
+        console.log("Received Sock message!");
+        var data =  JSON.parse(e.data);
+        var gps_location = data['content'];
+        console.log(gps_location);
+        $('#gps').text(gps_location + '\n');
+    };
+
+    gpsSocket.onclose = function(e) {
+        console.error('gps socket closed unexpectedly');
+    };
+
+</script>
+<script type="text/javascript" src='{% static "jquery-3.0/jquery-3.0.0.min.js" %}'></script>
+</html>
+
+
